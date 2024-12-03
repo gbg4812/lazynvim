@@ -10,4 +10,7 @@ return {
         name = "catppuccin",
         priority = 1000,
     },
+    {
+        "phelipetls/vim-hugo",
+    },
 }
