@@ -3,4 +3,4 @@
 -- Add any additional keymaps here
 
 -- This is going to get me cancelled
-vim.keymap.set({ "i", "n" }, "<C-c>", "<esc>")
+vim.keymap.set({ "i", "n", "v" }, "<C-c>", "<esc>")
