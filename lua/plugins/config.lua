@@ -27,4 +27,18 @@ return {
             },
         },
     },
+
+    {
+        "stevearc/conform.nvim",
+        -- You can also define any custom formatters here.
+        opts = {
+            formatters = {
+                prettier = {
+                    prepend_args = { "--prose-wrap", "always" },
+                },
+            },
+        },
+    },
+    { "mason-org/mason.nvim", version = "^1.0.0" },
+    { "mason-org/mason-lspconfig.nvim", version = "^1.0.0" },
 }

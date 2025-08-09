@@ -3,8 +3,8 @@
 -- Add any additional options here
 
 local opt = vim.opt
-
 opt.list = false
+
 opt.shiftwidth = 4
 opt.tabstop = 4
 
