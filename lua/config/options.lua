@@ -8,10 +8,6 @@ opt.list = false
 opt.shiftwidth = 4
 opt.tabstop = 4
 
--- set to `true` to follow the main branch
--- you need to have a working rust toolchain to build the plugin
--- in this case.
-vim.g.lazyvim_blink_main = false
 vim.g.snacks_animate = false
 
 vim.filetype.add({
