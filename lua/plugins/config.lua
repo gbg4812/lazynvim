@@ -21,6 +21,32 @@ return {
     },
 
     {
+        "neovim/nvim-lspconfig",
+        opts = {
+            servers = {
+                texlab = {
+                    settings = {
+                        texlab = {
+                            build = {
+                                executable = "latexmk",
+                                args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
+                            },
+                            forwardSearch = {
+                                executable = "zathura",
+                                args = { "--synctex-forward", "%l:1:%f", "%p" },
+                            },
+                            formatterLineLength = 80, -- 👈 wrap lines at 80 columns
+                            latexindent = {
+                                modifyLineBreaks = true, -- 👈 actually allows reflowing text
+                            },
+                        },
+                    },
+                },
+            },
+        },
+    },
+
+    {
         "lervag/vimtex",
         lazy = false, -- lazy-loading will disable inverse search
         config = function()
