@@ -4,3 +4,5 @@
 
 -- This is going to get me cancelled
 vim.keymap.set({ "i", "n", "v" }, "<C-c>", "<esc>")
+
+vim.keymap.set({ "n" }, "<F5>", function() end)

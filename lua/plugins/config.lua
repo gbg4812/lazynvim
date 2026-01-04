@@ -6,19 +6,7 @@ return {
         },
     },
 
-    {
-        "saghen/blink.cmp",
-        opts = {
-            completion = {
-                documentation = {
-                    window = {
-                        max_width = 80,
-                        max_height = 20,
-                    },
-                },
-            },
-        },
-    },
+    { "nvim-treesitter/nvim-treesitter", branch = "main" },
 
     {
         "stevearc/conform.nvim",
@@ -31,6 +19,7 @@ return {
             },
         },
     },
+
     {
         "lervag/vimtex",
         lazy = false, -- lazy-loading will disable inverse search
@@ -52,26 +41,56 @@ return {
                     enable = false,
                 },
             },
+            -- routes = {
+            --     {
+            --         filter = {
+            --             event = "lsp",
+            --             kind = "progress",
+            --             cond = function(message)
+            --                 local client = vim.tbl_get(message.opts, "progress", "client")
+            --                 return client == "ltex_plus"
+            --             end,
+            --         },
+            --         opts = { skip = true },
+            --     },
+            -- },
         },
     },
 
     {
-        "nvim-neo-tree/neo-tree.nvim",
-        cmd = "Neotree",
-        keys = {
-            {
-                "<leader>fe",
-                function()
-                    require("neo-tree.command").execute({ toggle = true, dir = LazyVim.root(), position = "float" })
-                end,
-                desc = "Explorer NeoTree (Root Dir)",
-            },
-            {
-                "<leader>fE",
-                function()
-                    require("neo-tree.command").execute({ toggle = true, dir = vim.uv.cwd(), position = "float" })
-                end,
-                desc = "Explorer NeoTree (cwd)",
+        "neovim/nvim-lspconfig",
+        optional = true,
+        opts = {
+            servers = {
+                texlab = {
+                    settings = {
+                        texlab = {
+                            latexindent = {
+                                modifyLineBreaks = true,
+                            },
+                        },
+                    },
+                },
+                ltex_plus = {
+                    settings = {
+                        ltex = {
+                            language = "ca-ES",
+                            hiddenFalsePositives = {
+                                ["ca-ES"] = {
+                                    {
+                                        rule = "MORFOLOGIK_RULE_CA_ES",
+                                        sentence = "Dummy\\d+",
+                                    },
+                                    {
+                                        rule = "MORFOLOGIK_RULE_CA_ES",
+                                        sentence = "Ina\\d+",
+                                    },
+                                },
+                            },
+                            checkFrequency = "save",
+                        },
+                    },
+                },
             },
         },
     },
