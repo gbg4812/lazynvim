@@ -25,19 +25,7 @@ local config = {
         },
     },
 
-    {
-        "saghen/blink.cmp",
-        opts = {
-            completion = {
-                documentation = {
-                    window = {
-                        max_width = 80,
-                        max_height = 20,
-                    },
-                },
-            },
-        },
-    },
+    { "nvim-treesitter/nvim-treesitter", branch = "main" },
 
     {
         "stevearc/conform.nvim",
@@ -50,7 +38,54 @@ local config = {
             },
         },
     },
-    { "mason-org/mason.nvim", version = "^1.0.0" },
-    { "mason-org/mason-lspconfig.nvim", version = "^1.0.0" },
+
+    {
+        "lervag/vimtex",
+        lazy = false, -- lazy-loading will disable inverse search
+        config = function()
+            vim.g.vimtex_view_method = "zathura"
+            vim.g.vimtex_quickfix_mode = 0
+        end,
+        keys = {
+            { "<localLeader>l", "", desc = "+vimtex", ft = "tex" },
+        },
+    },
+
+    {
+        "neovim/nvim-lspconfig",
+        optional = true,
+        opts = {
+            servers = {
+                texlab = {
+                    settings = {
+                        texlab = {
+                            latexindent = {
+                                modifyLineBreaks = true,
+                            },
+                        },
+                    },
+                },
+                ltex_plus = {
+                    settings = {
+                        ltex = {
+                            language = "ca-ES",
+                            hiddenFalsePositives = {
+                                ["ca-ES"] = {
+                                    {
+                                        rule = "MORFOLOGIK_RULE_CA_ES",
+                                        sentence = "Dummy\\d+",
+                                    },
+                                    {
+                                        rule = "MORFOLOGIK_RULE_CA_ES",
+                                        sentence = "Ina\\d+",
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+    },
 }
 return config
